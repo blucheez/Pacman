@@ -18,13 +18,13 @@ public class DotProcess {
     public DotProcess(int x, int y) {
         XFRAME = x;
         YFRAME = y;
-        xDots = new ArrayList<Integer>();
-        yDots = new ArrayList<Integer>();
+        xDots = new ArrayList<>();
+        yDots = new ArrayList<>();
     }
     //takes in a polka dot array, checks each place by 10 hor and 10 vertical, puts one there if possible
     public void placeDots(Polkadot pd[], Color[][] pixels) {
-        for(int y = 0; y < YFRAME; y += 10) {
-            for(int x = 0; x < XFRAME; x += 10) {
+        for(int y = 0; y < pixels.length; y += 10) {
+            for(int x = 0; x < pixels[0].length; x += 10) {
                 if(pixels[y][x].getBlue() <= pixels[y][x].getRed() + pixels[y][x].getGreen()) {
                     xDots.add(x);
                     yDots.add(y);
@@ -38,9 +38,8 @@ public class DotProcess {
     }
     
     public void drawDots(Polkadot pd[], Graphics g) {
-        for(int i = 0; i < pd.length; i++) {
+        for (int i = 0; i < pd.length; i++) {
             pd[i].draw(g);
-            System.out.println("attempting to draw");
         }
     }
 }

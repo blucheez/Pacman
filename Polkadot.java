@@ -24,7 +24,9 @@ public class Polkadot
    }
    public Polkadot()
    {
-      
+      myDiameter = 4;
+      myColor = Color.YELLOW;
+      myRadius = myDiameter / 2;
    }
  // accessor methods
    public double getX() 
@@ -57,6 +59,7 @@ public class Polkadot
    public void setY(double y)
    {
      myY = y;
+     canBeDrawn = true;
    } 
    public void setColor(Color c)
    {
