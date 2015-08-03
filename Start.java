@@ -11,6 +11,5 @@ public class Start {
       menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       menuFrame.setContentPane(new MenuPanel());
       menuFrame.setVisible(true);
-      System.out.println("test");
    }
 }
