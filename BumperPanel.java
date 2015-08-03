@@ -84,6 +84,39 @@ public class BumperPanel extends JPanel {
 
    private class Refresh implements ActionListener {
    
+<<<<<<< HEAD
+  	public void actionPerformed(ActionEvent e) {
+     	myBuffer.setColor(Color.black);
+     	myBuffer.fillRect(0, 0, xFRAME, yFRAME);
+ 	 
+     	myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
+ 	 
+     	pacman.draw(myBuffer);
+     	WallCollision.checkNorth(pacman, bluePixels);
+     	WallCollision.checkEast(pacman, bluePixels);
+     	WallCollision.checkSouth(pacman, bluePixels);
+     	WallCollision.checkWest(pacman, bluePixels);
+    	 
+     	if(slowCount == 7) {
+        	for (int i = 0; i < ghosts.length; i++) {
+           	ghosts[i].draw(myBuffer);
+           	WallCollision.checkNorth(ghosts[i], bluePixels);
+           	WallCollision.checkEast(ghosts[i], bluePixels);
+           	WallCollision.checkSouth(ghosts[i], bluePixels);
+           	WallCollision.checkWest(ghosts[i], bluePixels);
+           	ghosts[i].move(5);
+           	if (DeathByGhost.collide(pacman, ghosts[i])) {
+              	refresher.stop();
+              	GameOver.endGame();
+           	}
+        	}
+        	slowCount = 0;
+     	}
+     	slowCount++;
+    	 
+     	for(int i = 0; i < ghosts.length; i++)
+        	ghosts[i].draw(myBuffer);
+=======
       public void actionPerformed(ActionEvent e) {
          myBuffer.setColor(Color.black);
          myBuffer.fillRect(0, 0, xFRAME, yFRAME);
@@ -115,8 +148,9 @@ public class BumperPanel extends JPanel {
        
          for(int i = 0; i < ghosts.length; i++)
             ghosts[i].draw(myBuffer);
+>>>>>>> changes
        	 
-         myBuffer.setColor(Color.black);
+         myBuffer.setColor(Color.white);
          myBuffer.setFont(new Font("Monospaced", Font.BOLD, 8));
          myBuffer.drawString("Lives:" + lives, 420, 60);
        
