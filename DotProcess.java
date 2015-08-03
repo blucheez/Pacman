@@ -40,6 +40,7 @@ public class DotProcess {
     public void drawDots(Polkadot pd[], Graphics g) {
         for(int i = 0; i < pd.length; i++) {
             pd[i].draw(g);
+            System.out.println("attempting to draw");
         }
     }
 }
