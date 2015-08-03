@@ -6,6 +6,7 @@ import java.awt.*;
 
 public class Polkadot
 {
+private boolean valid = true;
    private double myX;   // x and y coordinates of center
    private double myY;
    private double myDiameter;
@@ -49,7 +50,15 @@ public class Polkadot
    { 
       return myRadius;
    }
+   public boolean getValidity()
+   {
+   return valid;
+   }
 // modifier methods
+   public void setValid(boolean x)
+   {
+   valid = x;
+   }
    public void setX(double x)
    {
       myX = x;
@@ -75,7 +84,7 @@ public class Polkadot
       myRadius = r;
       myDiameter = 2*r;
    }
- //	 instance methods
+ //     instance methods
    public void jump(int rightEdge, int bottomEdge)
    {
       // moves location to random (x, y) within the edges
@@ -91,3 +100,4 @@ public class Polkadot
       }
    }
 }
+
