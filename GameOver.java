@@ -16,7 +16,7 @@ public class GameOver extends JPanel{
    public GameOver() {
       setLayout(new GridLayout(2, 1));
     
-      JLabel label = new JLabel("You lost a life!", SwingConstants.CENTER);
+      JLabel label = new JLabel("You lost!", SwingConstants.CENTER);
       label.setFont(new Font("Arial", Font.BOLD, 50));
       add(label);
      	 
@@ -30,7 +30,14 @@ public class GameOver extends JPanel{
    
    private class Listener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         if (BumperPanel.getLives()>1)
+         if (BumperPanel.getScore()==195)
+         {
+         BumperPanel.setLives(3);
+            Winner.endFrame.setVisible(false);
+            Driver.frame.setVisible(false);
+            Start.menuFrame.setVisible(true);
+            }
+         if (BumperPanel.getLives()>0)
          {
             BumperPanel.setLives(BumperPanel.getLives()-1);
             GameOver.endFrame.setVisible(false);

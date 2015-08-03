@@ -32,7 +32,7 @@ public class BumperPanel extends JPanel {
       myBuffer = myImage.getGraphics();
       map = new Map();
       bluePixels = map.getArray();
-      pacman = new Pacman(200, 200);
+      pacman = new Pacman(20, 280);
       dotprocessor = new DotProcess(xFRAME, yFRAME);
       
       pd = new Polkadot[20000];
@@ -41,7 +41,7 @@ public class BumperPanel extends JPanel {
       }
       dotprocessor.placeDots(pd, bluePixels);
    
-      ghosts = new Ghost[5];
+      ghosts = new Ghost[0];
       for (int i = 0; i < ghosts.length; i++) {
          ghosts[i] = new Ghost();
       }
@@ -58,22 +58,38 @@ public class BumperPanel extends JPanel {
    
    }
 
-   public static void setLives(int x) {
+   public static void setLives(int x)
+   {
       //x = Integer.parseInt(JOptionPane.showInputDialog("Set Lives: "));
       lives = x;
    }
 
-   public static int getLives() {
+ public static void setScore(int x)
+   {
+      //x = Integer.parseInt(JOptionPane.showInputDialog("Set Lives: "));
+      score = x;
+   }
+
+   public static int getLives()
+   {
       return lives;
+   }
+   
+   
+   public static int getScore()
+   {
+      return score;
    }
 
    public void paintComponent(Graphics g) {
       g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
    }
 
-   public class Key extends KeyAdapter {
+   public class Key extends KeyAdapter
+   {
    
-      public void keyPressed(KeyEvent e) {
+      public void keyPressed(KeyEvent e)
+      {
          //System.out.println(e.getKeyCode());
          if ((e.getKeyCode() == KeyEvent.VK_UP) && (pacman.getY() > 15)) {
             pacman.moveVertical(-5);
@@ -90,12 +106,14 @@ public class BumperPanel extends JPanel {
       }
    }
 
-   private class Refresh implements ActionListener {
+   private class Refresh implements ActionListener 
+   {
    
-      public void actionPerformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e)
+      {
       
          //draws the background map
-          myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
+         myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
          
          //draws pacman, checks for collisions
          pacman.draw(myBuffer);
@@ -117,7 +135,13 @@ public class BumperPanel extends JPanel {
                
                //checks for when pacman ouches the ghost
                if (DeathByGhost.collide(pacman, ghosts[i])) {
-                  refresher.stop();
+                  lives--;
+                  pacman.setX(20);
+                  pacman.setY(280);
+                  for (int q = 0; q < ghosts.length; q++) {
+                     ghosts[q] = new Ghost();
+                  }
+                  if (lives==0)
                   GameOver.endGame();
                }
             }
@@ -135,12 +159,11 @@ public class BumperPanel extends JPanel {
             if (PolkadotCollision.collide(pacman, pd[i]))
             {
                score++;
+               pd[i].setValid(false);
                pd[i].setY(pd[i].getY()+300);
             }
          
-         //draw the dots
-         dotprocessor.drawDots(pd, myBuffer);
-         
+                     
          //displays the lives left
          myBuffer.setColor(Color.white);
          myBuffer.setFont(new Font("Monospaced", Font.BOLD, 8));
@@ -149,8 +172,18 @@ public class BumperPanel extends JPanel {
          //displays the score
          myBuffer.setColor(Color.white);
          myBuffer.setFont(new Font("Monospaced", Font.BOLD, 8));
-         myBuffer.drawString("Score:" + score, 40, 60);
-                     
+         myBuffer.drawString("Score:" + score, 30, 60);
+         
+         //draw the dots
+         if (lives==3)
+         {
+            dotprocessor.drawDots(pd, myBuffer);
+            for (int k=0; k<pd.length; k++)
+               pd[k].setValid(true);
+         }
+         else
+            dotprocessor.drawValidDots(pd, myBuffer);
+            
          repaint();
       }
    }
