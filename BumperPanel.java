@@ -93,17 +93,18 @@ public class BumperPanel extends JPanel {
    private class Refresh implements ActionListener {
    
       public void actionPerformed(ActionEvent e) {
-         myBuffer.setColor(Color.black);
-         myBuffer.fillRect(0, 0, xFRAME, yFRAME);
       
-         myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
-      
+         //draws the background map
+          myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
+         
+         //draws pacman, checks for collisions
          pacman.draw(myBuffer);
          WallCollision.checkNorth(pacman, bluePixels);
          WallCollision.checkEast(pacman, bluePixels);
          WallCollision.checkSouth(pacman, bluePixels);
          WallCollision.checkWest(pacman, bluePixels);
       
+         //moves the ghosts every 7th decision
          if (slowCount == 7) {
             for (int i = 0; i < ghosts.length; i++) {
                
@@ -113,6 +114,8 @@ public class BumperPanel extends JPanel {
                WallCollision.checkSouth(ghosts[i], bluePixels);
                WallCollision.checkWest(ghosts[i], bluePixels);
                ghosts[i].move(5);
+               
+               //checks for when pacman ouches the ghost
                if (DeathByGhost.collide(pacman, ghosts[i])) {
                   refresher.stop();
                   GameOver.endGame();
@@ -121,28 +124,13 @@ public class BumperPanel extends JPanel {
             slowCount = 0;
          }
          slowCount++;
-      
-         for (int i = 0; i < ghosts.length; i++) {
-            ghosts[i].draw(myBuffer);
-         }
-      
-         myBuffer.setColor(Color.black);
-         myBuffer.fillRect(0, 0, xFRAME, yFRAME);
-      
-         myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
-      
-         pacman.draw(myBuffer);
-         WallCollision.checkNorth(pacman, bluePixels);
-         WallCollision.checkEast(pacman, bluePixels);
-         WallCollision.checkSouth(pacman, bluePixels);
-         WallCollision.checkWest(pacman, bluePixels);
-      
          
-      
+         //draw the ghosts
          for (int i = 0; i < ghosts.length; i++) {
             ghosts[i].draw(myBuffer);
          }
          
+         //checks for dot collisions
          for (int i=0; i<pd.length; i++)
             if (PolkadotCollision.collide(pacman, pd[i]))
             {
@@ -150,12 +138,15 @@ public class BumperPanel extends JPanel {
                pd[i].setY(pd[i].getY()+300);
             }
          
+         //draw the dots
          dotprocessor.drawDots(pd, myBuffer);
-      
+         
+         //displays the lives left
          myBuffer.setColor(Color.white);
          myBuffer.setFont(new Font("Monospaced", Font.BOLD, 8));
          myBuffer.drawString("Lives:" + lives, 430, 60);
-            
+         
+         //displays the score
          myBuffer.setColor(Color.white);
          myBuffer.setFont(new Font("Monospaced", Font.BOLD, 8));
          myBuffer.drawString("Score:" + score, 40, 60);
