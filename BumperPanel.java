@@ -106,15 +106,8 @@ public class BumperPanel extends JPanel {
       
          if (slowCount == 7) {
             for (int i = 0; i < ghosts.length; i++) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-               //ghosts[i].draw(myBuffer);
-=======
+               
                ghosts[i].draw(myBuffer);
->>>>>>> origin/master
-=======
-               ghosts[i].draw(myBuffer);
->>>>>>> parent of baafaa8... changes
                WallCollision.checkNorth(ghosts[i], bluePixels);
                WallCollision.checkEast(ghosts[i], bluePixels);
                WallCollision.checkSouth(ghosts[i], bluePixels);
@@ -124,56 +117,6 @@ public class BumperPanel extends JPanel {
                   refresher.stop();
                   GameOver.endGame();
                }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of baafaa8... changes
-                ghosts[i].draw(myBuffer);
-            }
-
-            myBuffer.setColor(Color.black);
-            myBuffer.fillRect(0, 0, xFRAME, yFRAME);
-
-            myBuffer.drawImage(map.getImage(), 0, 0, xFRAME, yFRAME, null);
-
-            pacman.draw(myBuffer);
-            WallCollision.checkNorth(pacman, bluePixels);
-            WallCollision.checkEast(pacman, bluePixels);
-            WallCollision.checkSouth(pacman, bluePixels);
-            WallCollision.checkWest(pacman, bluePixels);
-
-            if (slowCount == 7) {
-                for (int i = 0; i < ghosts.length; i++) {
-                    ghosts[i].draw(myBuffer);
-                    WallCollision.checkNorth(ghosts[i], bluePixels);
-                    WallCollision.checkEast(ghosts[i], bluePixels);
-                    WallCollision.checkSouth(ghosts[i], bluePixels);
-                    WallCollision.checkWest(ghosts[i], bluePixels);
-                    ghosts[i].move(1);
-                    if (DeathByGhost.collide(pacman, ghosts[i])) {
-                        refresher.stop();
-                        lives--;
-                        pacman.setX(200);
-                        pacman.setY(200);
-
-                        for (int q = 0; q < ghosts.length; q++) {
-                            ghosts[q].setX(240);
-                            ghosts[q].setY(140);
-                        }
-
-                        if (lives == 0) {
-                            GameOver.endGame();
-                        }
-                        refresher.start();
-                    }
-                }
-                slowCount = 0;
->>>>>>> origin/master
-            }
-            slowCount++;
-
-=======
             }
             slowCount = 0;
          }
@@ -194,23 +137,7 @@ public class BumperPanel extends JPanel {
          WallCollision.checkSouth(pacman, bluePixels);
          WallCollision.checkWest(pacman, bluePixels);
       
-         if (slowCount == 7) {
->>>>>>> origin/master
-            for (int i = 0; i < ghosts.length; i++) {
-               ghosts[i].draw(myBuffer);
-               WallCollision.checkNorth(ghosts[i], bluePixels);
-               WallCollision.checkEast(ghosts[i], bluePixels);
-               WallCollision.checkSouth(ghosts[i], bluePixels);
-               WallCollision.checkWest(ghosts[i], bluePixels);
-               ghosts[i].move(1);
-               if (DeathByGhost.collide(pacman, ghosts[i])) {
-                  refresher.stop();
-                  GameOver.endGame();
-               }
-            }
-            slowCount = 0;
-         }
-         slowCount++;
+         
       
          for (int i = 0; i < ghosts.length; i++) {
             ghosts[i].draw(myBuffer);
