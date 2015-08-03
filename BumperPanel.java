@@ -107,10 +107,14 @@ public class BumperPanel extends JPanel {
          if (slowCount == 7) {
             for (int i = 0; i < ghosts.length; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                //ghosts[i].draw(myBuffer);
 =======
                ghosts[i].draw(myBuffer);
 >>>>>>> origin/master
+=======
+               ghosts[i].draw(myBuffer);
+>>>>>>> parent of baafaa8... changes
                WallCollision.checkNorth(ghosts[i], bluePixels);
                WallCollision.checkEast(ghosts[i], bluePixels);
                WallCollision.checkSouth(ghosts[i], bluePixels);
@@ -121,6 +125,10 @@ public class BumperPanel extends JPanel {
                   GameOver.endGame();
                }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of baafaa8... changes
                 ghosts[i].draw(myBuffer);
             }
 
@@ -161,6 +169,7 @@ public class BumperPanel extends JPanel {
                     }
                 }
                 slowCount = 0;
+>>>>>>> origin/master
             }
             slowCount++;
 
