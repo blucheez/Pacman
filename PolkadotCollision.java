@@ -5,7 +5,7 @@ public class PolkadotCollision
    public static boolean collide(Pacman pacman, Polkadot pd)
    {
       
-      if (pacman.getX()  >= pd.getX()-3 && pacman.getX() <= pd.getX()+3 && pacman.getY() >= pd.getY() - 3 && pacman.getY() <= pd.getY() + 3)               
+      if (pacman.getX()  >= pd.getX()-10 && pacman.getX() <= pd.getX()+10 && pacman.getY() >= pd.getY() - 10 && pacman.getY() <= pd.getY() + 10)               
                     
          return true;
       

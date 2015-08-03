@@ -1,7 +1,8 @@
 import
 javax.swing.*;
 
-public class Start {
+public class Start 
+{
    public static JFrame menuFrame;
    public static void main(String[] args)
    {
