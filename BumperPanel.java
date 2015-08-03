@@ -111,7 +111,7 @@ public class BumperPanel extends JPanel {
                WallCollision.checkEast(ghosts[i], bluePixels);
                WallCollision.checkSouth(ghosts[i], bluePixels);
                WallCollision.checkWest(ghosts[i], bluePixels);
-               ghosts[i].move(5);
+               ghosts[i].move(1);
                if (DeathByGhost.collide(pacman, ghosts[i])) {
                   refresher.stop();
                   GameOver.endGame();
