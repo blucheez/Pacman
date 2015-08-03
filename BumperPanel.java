@@ -17,7 +17,7 @@ public class BumperPanel extends JPanel {
 
    private BufferedImage myImage;
    private Graphics myBuffer;
-   private int score;
+   public static int score = 0;
    private Timer refresher;
    private Pacman pacman;
    private Ghost[] ghosts;
