@@ -23,8 +23,8 @@ public class DotProcess {
     }
     //takes in a polka dot array, checks each place by 10 hor and 10 vertical, puts one there if possible
     public void placeDots(Polkadot pd[], Color[][] pixels) {
-        for(int y = 0; y < pixels.length; y += 10) {
-            for(int x = 0; x < pixels[0].length; x += 10) {
+        for(int y = 5; y < pixels.length; y += 20) {
+            for(int x = 3; x < pixels[0].length; x += 20) {
                 if(pixels[y][x].getBlue() <= pixels[y][x].getRed() + pixels[y][x].getGreen()) {
                     xDots.add(x);
                     yDots.add(y);
