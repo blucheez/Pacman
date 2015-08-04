@@ -9,7 +9,7 @@
       {
          frame = new JFrame("PACMAN");
          frame.setSize(XDIMENSION, YDIMENSION);
-         frame.setLocation(200, 200);
+         frame.setLocationRelativeTo(null);
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          frame.setContentPane(new BumperPanel(XDIMENSION, YDIMENSION, ghosts));
          frame.setVisible(true);
