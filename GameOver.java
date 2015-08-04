@@ -4,13 +4,15 @@ import java.awt.event.*;
 
 public class GameOver extends JPanel{
    public static JFrame endFrame;
-   public static void endGame() {
+   private static int ghosts;
+   public static void endGame(int g) {
       endFrame = new JFrame("OH NO!");
       endFrame.setSize(400, 400);
       endFrame.setLocation(200, 200);
       endFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       endFrame.setContentPane(new GameOver());
       endFrame.setVisible(true);
+      ghosts = g;
    }
    
    public GameOver() {
@@ -42,7 +44,7 @@ public class GameOver extends JPanel{
             BumperPanel.setLives(BumperPanel.getLives()-1);
             GameOver.endFrame.setVisible(false);
             Driver.frame.setVisible(false);
-            Driver.gameFrame();
+            Driver.gameFrame(ghosts);
          }
          else
          {

@@ -25,7 +25,7 @@ public class BumperPanel extends JPanel {
    private Map map;
    private DotProcess dotprocessor;
 
-   public BumperPanel(int x, int y) {
+   public BumperPanel(int x, int y, int ghgosts) {
       xFRAME = x;
       yFRAME = y;
       myImage = new BufferedImage(xFRAME, yFRAME, BufferedImage.TYPE_INT_RGB);
@@ -41,7 +41,7 @@ public class BumperPanel extends JPanel {
       }
       dotprocessor.placeDots(pd, bluePixels);
    
-      ghosts = new Ghost[0];
+      ghosts = new Ghost[ghgosts];
       for (int i = 0; i < ghosts.length; i++) {
          ghosts[i] = new Ghost();
       }
@@ -142,7 +142,7 @@ public class BumperPanel extends JPanel {
                      ghosts[q] = new Ghost();
                   }
                   if (lives==0)
-                  GameOver.endGame();
+                  GameOver.endGame(ghosts.length);
                }
             }
             slowCount = 0;
