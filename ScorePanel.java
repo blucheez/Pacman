@@ -40,12 +40,16 @@ public class ScorePanel extends JPanel {
         setForeground(Color.yellow);
 
         JPanel titlePanel = new JPanel();
-        JLabel name = new JLabel("Name");
+        titlePanel.setLayout(new GridLayout(1, 3));
+        JLabel name = new JLabel("Name", SwingConstants.CENTER);
         name.setForeground(Color.yellow);
         titlePanel.add(name);
-        JLabel score = new JLabel("Score");
+        JLabel score = new JLabel("Score", SwingConstants.CENTER);
         score.setForeground(Color.yellow);
         titlePanel.add(score);
+        JLabel numghost = new JLabel("Number of Ghosts", SwingConstants.CENTER);
+        numghost.setForeground(Color.yellow);
+        titlePanel.add(numghost);
         titlePanel.setBackground(Color.blue);
         add(titlePanel, BorderLayout.NORTH);
 
