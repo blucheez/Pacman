@@ -50,20 +50,20 @@ public class ScorePanel extends JPanel {
         add(titlePanel, BorderLayout.NORTH);
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(0, 2));
+        mainPanel.setLayout(new GridLayout(0, 2, 10, 10));
 
         Scanner infile = null;
         try {
             infile = new Scanner(new File("scores.txt"));
             while (infile.hasNext()) {
-                addPerson(mainPanel, infile.next(), infile.nextInt());
+                addPerson(mainPanel, infile.nextLine(), Integer.parseInt(infile.nextLine()));
             }
         } catch (FileNotFoundException e) {
             System.out.println("File NOt Found");
         }
 
-        titlePanel.setBackground(Color.blue);
-        add(titlePanel, BorderLayout.CENTER);
+        mainPanel.setBackground(Color.blue);
+        add(mainPanel, BorderLayout.CENTER);
 
         JButton back = new JButton("Back");
         back.addActionListener(new Back());
@@ -75,10 +75,13 @@ public class ScorePanel extends JPanel {
     }
 
     private void addPerson(JPanel p, String s, int score) {
-        JLabel newName = new JLabel(s);
+        JLabel newName = new JLabel(s, SwingConstants.RIGHT);
+        newName.setForeground(Color.YELLOW);
         p.add(newName);
-        JLabel newScore = new JLabel("" + score);
+        JLabel newScore = new JLabel("" + score, SwingConstants.LEFT);
+        newScore.setForeground(Color.YELLOW);
         p.add(newScore);
+        
     }
 
     private class Back implements ActionListener {
